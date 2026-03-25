@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Rittenhouse · Pool & Grounds</title>
+
+<!-- ── BRAND FAVICON (Rittenhouse R monogram, inline SVG) ── -->
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230B1829'/%3E%3Crect x='14' y='58' width='72' height='28' rx='4' fill='%23163456'/%3E%3Cpath d='M14 72 Q30 64 50 72 Q70 80 86 72' stroke='%235BC8C5' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Ctext x='50' y='54' font-family='Georgia,serif' font-size='42' font-weight='700' fill='white' text-anchor='middle' dominant-baseline='middle'%3ER%3C/text%3E%3Ccircle cx='72' cy='22' r='6' fill='%23C87941'/%3E%3C/svg%3E"/>
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230B1829'/%3E%3Crect x='14' y='58' width='72' height='28' rx='4' fill='%23163456'/%3E%3Cpath d='M14 72 Q30 64 50 72 Q70 80 86 72' stroke='%235BC8C5' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Ctext x='50' y='54' font-family='Georgia,serif' font-size='42' font-weight='700' fill='white' text-anchor='middle' dominant-baseline='middle'%3ER%3C/text%3E%3Ccircle cx='72' cy='22' r='6' fill='%23C87941'/%3E%3C/svg%3E"/>
+<meta name="apple-mobile-web-app-title" content="Rittenhouse"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="theme-color" content="#0B1829"/>
+
+<!-- ── OPEN GRAPH ── -->
+
+<meta property="og:title" content="Rittenhouse · Pool & Grounds · Henderson NV"/>
+<meta property="og:description" content="SOD health · Irrigation · Pest · Water cost · Live weather — Henderson, NV"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Rittenhouse · Pool & Grounds · Henderson NV"/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ── RESET & BRAND VARS ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* Rittenhouse brand palette */
+  --navy:#0B1829;
+  --navy-2:#101f35;
+  --navy-3:#163456;
+  --navy-4:#1e4270;
+  --teal:#5BC8C5;
+  --teal-d:#3a9e9b;
+  --teal-g:rgba(91,200,197,.12);
+  --amber:#C87941;
+  --amber-l:#e8954f;
+  --amber-g:rgba(200,121,65,.15);
+  --slate:#8fa3b8;
+  --slate-d:#5a7088;
+  --tx:#e8eef5;
+  --tx-m:#8fa3b8;
+  --tx-s:#4a6278;
+  /* Status colors */
+  --red:#e05c52;
+  --red-g:rgba(224,92,82,.15);
+  --green:#4caf82;
+  --green-g:rgba(76,175,130,.15);
+  --green-d:#2d7a55;
+  --blue:#5b9bd5;
+  --blue-g:rgba(91,155,213,.13);
+  /* Nav */
+  --nav-h:62px;
+}
+html{height:100%;scroll-behavior:smooth}
+body{background:var(--navy);color:var(--tx);font-family:'Inter',sans-serif;min-height:100%;-webkit-text-size-adjust:100%}
+
+/* ── WORDMARK SVG (inline, reused in header) ── */
+.wm-pool-icon{display:inline-block;vertical-align:middle}
+
+/* ── TOP STATUS BAR ── */
+.sync-bar{
+  background:linear-gradient(90deg,rgba(91,200,197,.08),rgba(91,200,197,.04));
+  border-bottom:1px solid rgba(91,200,197,.2);
+  padding:5px 16px;font-size:11px;color:var(--teal);
+  display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;
+  letter-spacing:.3px;
+}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);display:inline-block;flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(91,200,197,.4)}50%{opacity:.6;box-shadow:0 0 0 4px rgba(91,200,197,0)}}
+
+/* ── HEADER ── */
+.hdr{
+  background:linear-gradient(135deg,#071220 0%,#0B1829 60%,#0e1f38 100%);
+  border-bottom:1px solid rgba(91,200,197,.15);
+  padding:0 16px;position:sticky;top:0;z-index:100;
+}
+.hdr-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px;height:54px}
+
+/* Inline wordmark */
+.brand-mark{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.brand-icon{width:34px;height:34px;flex-shrink:0}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--tx);letter-spacing:.5px}
+.brand-sub{font-size:9px;font-weight:600;color:var(--teal);letter-spacing:2px;text-transform:uppercase;margin-top:1px}
+
+.sp{flex:1}
+.bdg{display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:600;padding:2px 8px;border-radius:100px;font-family:'DM Mono',monospace;white-space:nowrap;letter-spacing:.3px}
+.bdg-t{background:var(--teal-g);border:1px solid rgba(91,200,197,.3);color:var(--teal)}
+.bdg-a{background:var(--amber-g);border:1px solid rgba(200,121,65,.35);color:var(--amber-l)}
+
+/* ── DESKTOP TABS ── */
+.desktop-tabs{display:flex;gap:2px}
+.tab-btn{background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:var(--tx-m);padding:6px 12px;border-radius:6px;transition:all .15s;white-space:nowrap}
+.tab-btn:hover{background:var(--navy-3);color:var(--tx)}
+.tab-btn.active{background:var(--navy-3);color:var(--teal);font-weight:600}
+
+/* ── MOBILE BOTTOM NAV ── */
+.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--navy-2);border-top:1px solid rgba(91,200,197,.12);padding-bottom:env(safe-area-inset-bottom)}
+.mobile-nav-inner{display:flex;justify-content:space-around;align-items:center;height:var(--nav-h)}
+.mob-tab{background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 4px;min-width:52px;color:var(--tx-s);transition:color .15s;flex:1;-webkit-tap-highlight-color:transparent}
+.mob-tab.active{color:var(--teal)}
+.mob-tab-icon{font-size:19px;line-height:1}
+.mob-tab-label{font-size:9px;font-weight:600;font-family:'Inter',sans-serif;letter-spacing:.3px;text-transform:uppercase}
+
+/* ── MAIN ── */
+.main{max-width:1100px;margin:0 auto;padding:22px 16px}
+.page{display:none;animation:fi .2s ease}
+.page.active{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── TYPE ── */
+.sec-t{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--tx);margin-bottom:4px;letter-spacing:.3px}
+.sec-s{font-size:12px;color:var(--tx-m);margin-bottom:20px;line-height:1.5}
+
+/* ── CARDS ── */
+.card{background:var(--navy-2);border:1px solid rgba(91,200,197,.1);border-radius:14px;padding:18px 20px;margin-bottom:14px}
+.card-t{font-size:13px;font-weight:600;color:var(--tx);margin-bottom:3px;letter-spacing:.2px}
+.card-s{font-size:11px;color:var(--tx-m);margin-bottom:14px}
+
+/* ── TEAL ACCENT LINE on cards ── */
+.card-accent{border-top:2px solid var(--teal)}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+
+/* ── STAT CARDS ── */
+.stat{background:var(--navy-2);border:1px solid rgba(91,200,197,.1);border-radius:14px;padding:14px 15px;position:relative;overflow:hidden}
+.stat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:14px 14px 0 0}
+.stat.t::before{background:var(--teal)}.stat.a::before{background:var(--amber)}
+.stat.r::before{background:var(--red)}.stat.b::before{background:var(--blue)}.stat.g::before{background:var(--green)}
+.stat-l{font-size:9px;font-weight:600;color:var(--tx-s);letter-spacing:.8px;text-transform:uppercase;margin-bottom:6px}
+.stat-v{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;line-height:1;margin-bottom:3px}
+.stat-v.t{color:var(--teal)}.stat-v.a{color:var(--amber-l)}.stat-v.r{color:var(--red)}.stat-v.b{color:var(--blue)}.stat-v.g{color:var(--green)}
+.stat-s{font-size:10px;color:var(--tx-m)}
+.stat-i{position:absolute;top:10px;right:12px;font-size:18px;opacity:.3}
+
+/* ── DISASTER BANNER ── */
+.disaster{background:linear-gradient(135deg,rgba(224,92,82,.12),rgba(224,92,82,.06));border:1px solid rgba(224,92,82,.3);border-radius:14px;padding:14px 18px;margin-bottom:16px;display:flex;align-items:center;gap:14px}
+.dis-icon{font-size:28px;flex-shrink:0}
+.dis-title{font-size:13px;font-weight:700;color:var(--red);margin-bottom:2px;font-family:'Inter',sans-serif}
+.dis-txt{font-size:11px;color:rgba(224,92,82,.8);line-height:1.5}
+.dis-stat{margin-left:auto;text-align:right;font-family:'DM Mono',monospace;flex-shrink:0}
+.dis-n{font-size:22px;font-weight:500;color:var(--red)}
+.dis-l{font-size:9px;color:var(--tx-s)}
+
+/* ── ZONE GRID ── */
+.z-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.zc{background:var(--navy-3);border:1px solid rgba(91,200,197,.1);border-radius:10px;padding:11px 10px;cursor:pointer;transition:all .15s;position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent}
+.zc:active,.zc.sel{border-color:var(--teal);background:rgba(91,200,197,.08)}
+.zc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
+.h5::after{background:#4caf82}.h4::after{background:#6fcf97}.h3::after{background:var(--amber)}
+.h2::after{background:var(--red)}.h1::after{background:#7b1a14}.h0::after{background:var(--navy-4)}
+.zid{font-family:'DM Mono',monospace;font-size:9px;color:var(--teal);margin-bottom:2px;letter-spacing:.5px}
+.zloc{font-size:13px;font-weight:600;margin-bottom:3px;color:var(--tx)}
+.zsun{font-size:10px;color:var(--tx-m)}
+.zdots{display:flex;gap:3px;margin-top:5px;align-items:center}
+.zdot{width:6px;height:6px;border-radius:50%;background:var(--navy-4)}
+.zdot.f{background:var(--green)}.zdot.w{background:var(--amber)}.zdot.rd{background:var(--red)}
+
+/* ── FORMS ── */
+.field{margin-bottom:12px}
+.field-l{font-size:10px;font-weight:600;color:var(--tx-s);text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px}
+input,select,textarea{background:var(--navy-3);border:1px solid rgba(91,200,197,.15);border-radius:8px;color:var(--tx);padding:10px 12px;font-size:16px;font-family:'Inter',sans-serif;outline:none;width:100%;transition:border-color .15s;-webkit-appearance:none;appearance:none}
+input:focus,select:focus,textarea:focus{border-color:var(--teal)}
+textarea{resize:vertical;min-height:52px;font-size:14px}
+.num-btns{display:flex;gap:6px}
+.num-btn{flex:1;padding:10px 0;border-radius:8px;border:1px solid rgba(91,200,197,.15);background:var(--navy-3);color:var(--tx-m);cursor:pointer;font-family:'DM Mono',monospace;font-weight:600;font-size:16px;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.num-btn.ag{border-color:var(--teal);background:rgba(91,200,197,.1);color:var(--teal)}
+.num-btn.ab{border-color:var(--blue);background:rgba(91,155,213,.1);color:var(--blue)}
+
+/* ── BUTTONS ── */
+.btn-t{background:rgba(91,200,197,.12);border:1px solid rgba(91,200,197,.3);border-radius:10px;color:var(--teal);font-family:'Inter',sans-serif;font-weight:600;font-size:14px;padding:12px 20px;cursor:pointer;transition:all .15s;width:100%;margin-top:12px;-webkit-tap-highlight-color:transparent;letter-spacing:.2px}
+.btn-t:active{background:rgba(91,200,197,.2)}
+.btn-a{background:rgba(200,121,65,.12);border:1px solid rgba(200,121,65,.3);border-radius:10px;color:var(--amber-l);font-family:'Inter',sans-serif;font-weight:600;font-size:14px;padding:12px 20px;cursor:pointer;transition:all .15s;width:100%;margin-top:12px;-webkit-tap-highlight-color:transparent}
+
+/* ── PILLS ── */
+.pill{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:100px;font-family:'DM Mono',monospace;letter-spacing:.2px}
+.pill-t{background:var(--teal-g);border:1px solid rgba(91,200,197,.25);color:var(--teal)}
+.pill-a{background:var(--amber-g);border:1px solid rgba(200,121,65,.3);color:var(--amber-l)}
+.pill-r{background:var(--red-g);border:1px solid rgba(224,92,82,.3);color:var(--red)}
+.pill-b{background:var(--blue-g);border:1px solid rgba(91,155,213,.25);color:var(--blue)}
+.pill-g{background:var(--green-g);border:1px solid rgba(76,175,130,.25);color:var(--green)}
+
+/* ── TABLE ── */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tbl{width:100%;border-collapse:collapse;font-size:12px;min-width:380px}
+.tbl th{text-align:left;padding:8px 12px;border-bottom:1px solid rgba(91,200,197,.1);font-size:9px;color:var(--tx-s);font-weight:600;letter-spacing:.6px;text-transform:uppercase;white-space:nowrap}
+.tbl td{padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.04);white-space:nowrap}
+.tbl tr:hover td{background:rgba(91,200,197,.04)}
+
+/* ── IRR SCHEDULE ── */
+.irr-row{display:flex;align-items:center;gap:10px;background:var(--navy-3);border:1px solid rgba(91,200,197,.08);border-radius:8px;padding:10px 12px;margin-bottom:8px}
+.irr-t{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;width:80px;flex-shrink:0;color:var(--tx)}
+.irr-b{font-size:9px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;letter-spacing:.3px}
+.irr-b.spr{background:var(--blue-g);border:1px solid rgba(91,155,213,.25);color:var(--blue)}
+.irr-b.drip{background:var(--teal-g);border:1px solid rgba(91,200,197,.25);color:var(--teal)}
+.irr-bar-wrap{flex:1;height:3px;background:var(--navy-4);border-radius:2px}
+.irr-bar-fill{height:100%;border-radius:2px}
+.irr-dur{font-family:'DM Mono',monospace;font-size:11px;color:var(--amber-l);flex-shrink:0}
+
+/* ── RUN CHECK ── */
+.run-check-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.run-check-label{font-size:11px;color:var(--tx-m);width:78px;font-family:'DM Mono',monospace;flex-shrink:0}
+.run-check-btns{display:flex;gap:8px}
+.run-check-btn{padding:8px 12px;border-radius:8px;border:1px solid rgba(91,200,197,.12);background:var(--navy-3);cursor:pointer;font-size:18px;transition:all .15s;-webkit-tap-highlight-color:transparent;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+.run-status-label{font-size:10px;color:var(--tx-s);font-family:'DM Mono',monospace}
+
+/* ── SAVE MSG ── */
+.save-msg{font-size:11px;font-family:'DM Mono',monospace;padding:8px 12px;border-radius:8px;display:inline-flex;align-items:center;gap:5px;margin-top:10px}
+.save-ok{background:var(--green-g);color:var(--green)}
+.save-err{background:var(--red-g);color:var(--red)}
+
+/* ── WEATHER ── */
+.wx-scroll{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.wx-day{background:var(--navy-3);border:1px solid rgba(91,200,197,.08);border-radius:10px;padding:10px 6px;text-align:center}
+.wx-day-name{font-size:9px;font-weight:700;color:var(--tx-s);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.wx-day-icon{font-size:24px;margin-bottom:5px}
+.wx-day-hi{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--red)}
+.wx-day-lo{font-family:'DM Mono',monospace;font-size:12px;color:var(--blue)}
+.wx-day-rain{font-size:9px;color:var(--tx-s);margin-top:3px}
+.advisory{border-radius:12px;padding:13px 16px;display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.advisory.danger{background:rgba(224,92,82,.08);border:1px solid rgba(224,92,82,.25)}
+.advisory.warn{background:rgba(200,121,65,.08);border:1px solid rgba(200,121,65,.25)}
+.advisory.good{background:rgba(76,175,130,.07);border:1px solid rgba(76,175,130,.22)}
+.advisory-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.advisory-title{font-size:13px;font-weight:700;margin-bottom:2px}
+.advisory-txt{font-size:11px;line-height:1.5;color:var(--tx-m)}
+.today-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.today-row:last-child{border:none}
+.today-label{font-size:12px;color:var(--tx-m)}
+.today-val{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--tx)}
+.irr-rec-item{display:flex;gap:10px;align-items:flex-start;background:var(--navy-3);border-radius:8px;padding:10px 12px;margin-bottom:8px;border-left:3px solid}
+.irr-rec-item.go{border-color:var(--green)}.irr-rec-item.skip{border-color:var(--red)}.irr-rec-item.reduce{border-color:var(--amber)}
+.irr-rec-icon{font-size:16px;flex-shrink:0;margin-top:2px}
+.irr-rec-text{font-size:12px;line-height:1.5;color:var(--tx)}
+.irr-rec-text strong{display:block;font-size:13px;margin-bottom:1px;color:var(--tx)}
+
+/* ── CAM + REP ── */
+.cam-card{background:var(--navy-3);border:1px solid rgba(91,200,197,.08);border-radius:10px;padding:11px 13px;margin-bottom:8px}
+.cam-id{font-family:'DM Mono',monospace;font-size:9px;color:var(--tx-s);margin-bottom:2px;letter-spacing:.5px}
+.cam-pos{font-size:13px;font-weight:600;margin-bottom:2px;color:var(--tx)}
+.cam-cov{font-size:11px;color:var(--tx-m)}
+.rep-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.rep-name{font-size:13px;font-weight:500;color:var(--tx)}
+.rep-right{text-align:right}
+.rep-due{font-size:10px;color:var(--tx-m);margin-bottom:3px}
+
+/* ── MISC ── */
+.compass{font-size:9px;color:var(--tx-s);text-transform:uppercase;letter-spacing:1.2px;text-align:center;padding:5px 0}
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.divider{height:1px;background:rgba(91,200,197,.08);margin:14px 0}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  .desktop-tabs{display:none}
+  .mobile-nav{display:block}
+  .main{padding:16px 12px;padding-bottom:calc(var(--nav-h) + 16px + env(safe-area-inset-bottom))}
+  .g2{grid-template-columns:1fr}
+  .g4{grid-template-columns:1fr 1fr}
+  .sec-t{font-size:22px}
+  .disaster{flex-wrap:wrap;gap:10px}
+  .dis-stat{margin-left:0}
+  .hdr-in{gap:10px}
+  .bdg{display:none}
+  .brand-name{font-size:15px}
+  .brand-sub{display:none}
+  .wx-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+@media(min-width:641px){
+  .mobile-nav{display:none}
+  .desktop-tabs{display:flex}
+}
+</style>
+
+</head>
+<body>
+
+<!-- STATUS BAR -->
+
+<div class="sync-bar">
+  <span class="live-dot"></span>
+  Google Sheets connected · Rittenhouse Pool & Grounds · Henderson, NV
+</div>
+
+<!-- HEADER -->
+
+<header class="hdr">
+  <div class="hdr-in">
+    <!-- Brand wordmark — inline SVG, no external files needed -->
+    <div class="brand-mark">
+      <svg class="brand-icon" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="60" height="60" rx="12" fill="#101f35"/>
+        <!-- Pool rectangle -->
+        <rect x="8" y="36" width="44" height="17" rx="3" fill="#163456"/>
+        <!-- Wave -->
+        <path d="M8 44 Q17 39 30 44 Q43 49 52 44" stroke="#5BC8C5" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <!-- R monogram -->
+        <text x="30" y="33" font-family="Georgia,serif" font-size="26" font-weight="700" fill="white" text-anchor="middle" dominant-baseline="middle">R</text>
+        <!-- Amber accent dot -->
+        <circle cx="44" cy="13" r="4" fill="#C87941"/>
+      </svg>
+      <div class="brand-text">
+        <span class="brand-name">Rittenhouse</span>
+        <span class="brand-sub">Pool &amp; Grounds</span>
+      </div>
+    </div>
+
+```
+<span class="bdg bdg-t"><span class="live-dot" style="width:5px;height:5px"></span>Henderson NV</span>
+<span class="bdg bdg-a">SOD Active</span>
+<div class="sp"></div>
+
+<nav class="desktop-tabs">
+  <button class="tab-btn active" onclick="showTab('overview',this)">Overview</button>
+  <button class="tab-btn" onclick="showTab('sod',this)">🌱 SOD</button>
+  <button class="tab-btn" onclick="showTab('irrigation',this)">💧 Irrigation</button>
+  <button class="tab-btn" onclick="showTab('pest',this)">🐇 Pest</button>
+  <button class="tab-btn" onclick="showTab('water',this)">📊 Water</button>
+  <button class="tab-btn" onclick="showTab('weather',this)">🌤️ Weather</button>
+</nav>
+```
+
+  </div>
+</header>
+
+<!-- MOBILE BOTTOM NAV -->
+
+<nav class="mobile-nav">
+  <div class="mobile-nav-inner">
+    <button class="mob-tab active" onclick="showTab('overview',this)" data-tab="overview"><span class="mob-tab-icon">🏠</span><span class="mob-tab-label">Home</span></button>
+    <button class="mob-tab" onclick="showTab('sod',this)" data-tab="sod"><span class="mob-tab-icon">🌱</span><span class="mob-tab-label">SOD</span></button>
+    <button class="mob-tab" onclick="showTab('irrigation',this)" data-tab="irrigation"><span class="mob-tab-icon">💧</span><span class="mob-tab-label">Water</span></button>
+    <button class="mob-tab" onclick="showTab('pest',this)" data-tab="pest"><span class="mob-tab-icon">🐇</span><span class="mob-tab-label">Pest</span></button>
+    <button class="mob-tab" onclick="showTab('weather',this)" data-tab="weather"><span class="mob-tab-icon">🌤️</span><span class="mob-tab-label">Weather</span></button>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ══ OVERVIEW ══════════════════════════════════════════════ -->
+
+<div id="page-overview" class="page active">
+  <div class="sec-t">Command Center</div>
+  <div class="sec-s">Henderson, NV · SOD installed March 2026 · Google Sheets synced</div>
+
+  <div class="disaster">
+    <div class="dis-icon">☠️</div>
+    <div>
+      <div class="dis-title">THE EVENT — July 2024</div>
+      <div class="dis-txt">43,000 gal · 1,421 GPD · SOD died during 3-week absence.<br><strong style="color:rgba(224,92,82,.9)">New SOD March 2026. This cannot happen again.</strong></div>
+    </div>
+    <div class="dis-stat"><div class="dis-n">$295.66</div><div class="dis-l">peak · one month</div></div>
+  </div>
+
+  <div class="g4">
+    <div class="stat t"><div class="stat-i">💧</div><div class="stat-l">Last Bill Feb '26</div><div class="stat-v t">$87.41</div><div class="stat-s">8 kGal · 293 GPD</div></div>
+    <div class="stat a"><div class="stat-i">📅</div><div class="stat-l">2025 Total Spend</div><div class="stat-v a">$1,368</div><div class="stat-s">No SOD all year</div></div>
+    <div class="stat r"><div class="stat-i">⚠️</div><div class="stat-l">Jul '26 Alert</div><div class="stat-v r">$210</div><div class="stat-s">Exceed = cut schedule</div></div>
+    <div class="stat g"><div class="stat-i">🌱</div><div class="stat-l">SOD Status</div><div class="stat-v g">Active</div><div class="stat-s">New March 2026</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-t">18-Month Bill History</div>
+    <div class="card-s">Red = Jul '24 disaster · Teal = new SOD era · Dark = no SOD</div>
+    <canvas id="billChart" height="100"></canvas>
+  </div>
+
+  <div class="g2">
+    <div class="card" style="margin:0">
+      <div class="card-t">Summer Comparison</div>
+      <div class="card-s">Jun–Sep kGal · 2024 (SOD) vs 2025 (no SOD)</div>
+      <canvas id="summerChart" height="140"></canvas>
+    </div>
+    <div class="card" style="margin:0">
+      <div class="card-t">2026 Summer Projection</div>
+      <div class="card-s">Est. monthly bill with new SOD active</div>
+      <canvas id="projChart" height="140"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SOD ════════════════════════════════════════════════════ -->
+
+<div id="page-sod" class="page">
+  <div class="sec-t">SOD Health</div>
+  <div class="sec-s">Tap a zone to rate it · All data saves to Google Sheets</div>
+
+  <div class="g2">
+    <div class="card" style="margin:0">
+      <div class="card-t">Zone Grid — 9 Zones</div>
+      <div class="compass">⬆ NORTH · BACK FENCE · WILDLIFE ZONE</div>
+      <div class="z-grid" id="zoneGrid"></div>
+      <div class="compass">⬇ SOUTH · POOL + HOUSE</div>
+    </div>
+    <div>
+      <div class="card" id="zonePanelCard" style="margin:0;display:none">
+        <div class="card-t" id="zonePanelTitle"></div>
+        <div class="card-s" id="zonePanelNote"></div>
+        <div class="field">
+          <div class="field-l">SOD Color 1–5</div>
+          <div class="num-btns" id="colorBtns"></div>
+          <div style="font-size:10px;color:var(--tx-s);margin-top:3px">1 = Brown/dead · 5 = Deep green</div>
+        </div>
+        <div class="field">
+          <div class="field-l">Moisture 1–5</div>
+          <div class="num-btns" id="moistureBtns"></div>
+          <div style="font-size:10px;color:var(--tx-s);margin-top:3px">1 = Bone dry · 5 = Saturated</div>
+        </div>
+        <div class="field">
+          <div class="field-l">Pest Activity</div>
+          <div id="pestActivityBtns" style="display:flex;gap:7px;flex-wrap:wrap"></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:14px">
+        <div class="card-t">Save Today's Observation</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="field"><div class="field-l">Date</div><input type="date" id="sodDate"/></div>
+          <div class="field"><div class="field-l">Temp °F</div><input type="number" id="sodTemp" placeholder="88"/></div>
+        </div>
+        <div class="field">
+          <div class="field-l">Overall Status</div>
+          <select id="sodOverall"><option>🟢 Healthy</option><option>🟡 Watch</option><option>🔴 Danger</option><option>☠️ Critical</option></select>
+        </div>
+        <div class="field"><div class="field-l">Action Taken</div><input type="text" id="sodAction" placeholder="e.g. Spot watered Z1–Z3"/></div>
+        <div class="field"><div class="field-l">Notes</div><textarea id="sodNotes" placeholder="Observations…"></textarea></div>
+        <button class="btn-t" onclick="saveSod()">Save to Google Sheets</button>
+        <div id="sodSaveMsg"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="sodHistoryCard" style="display:none">
+    <div class="card-t">Recent SOD Log</div>
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Date</th><th>Status</th><th>Temp</th><th>Action</th></tr></thead><tbody id="sodHistoryBody"></tbody></table></div>
+  </div>
+</div>
+
+<!-- ══ IRRIGATION ═════════════════════════════════════════════ -->
+
+<div id="page-irrigation" class="page">
+  <div class="sec-t">Irrigation</div>
+  <div class="sec-s">Log daily runs · Mon–Sat schedule · 5 runs per day</div>
+
+  <div class="g2">
+    <div class="card" style="margin:0">
+      <div class="card-t">Active Schedule · Mon–Sat</div>
+      <div class="card-s">3 sprinkler runs + 2 drip runs daily</div>
+      <div class="irr-row"><div class="irr-t">4:00 AM</div><div class="irr-b drip">Drip</div><div class="irr-bar-wrap"><div class="irr-bar-fill" style="width:100%;background:var(--teal)"></div></div><div class="irr-dur">15 min</div></div>
+      <div class="irr-row"><div class="irr-t">5:00 AM</div><div class="irr-b spr">Sprinkler</div><div class="irr-bar-wrap"><div class="irr-bar-fill" style="width:40%;background:var(--blue)"></div></div><div class="irr-dur">6 min</div></div>
+      <div class="irr-row"><div class="irr-t">10:00 AM</div><div class="irr-b spr">Sprinkler</div><div class="irr-bar-wrap"><div class="irr-bar-fill" style="width:40%;background:var(--blue)"></div></div><div class="irr-dur">6 min</div></div>
+      <div class="irr-row"><div class="irr-t">5:00 PM</div><div class="irr-b spr">Sprinkler</div><div class="irr-bar-wrap"><div class="irr-bar-fill" style="width:40%;background:var(--blue)"></div></div><div class="irr-dur">6 min</div></div>
+      <div class="irr-row"><div class="irr-t">8:00 PM</div><div class="irr-b drip">Drip</div><div class="irr-bar-wrap"><div class="irr-bar-fill" style="width:100%;background:var(--teal)"></div></div><div class="irr-dur">15 min</div></div>
+    </div>
+    <div class="card" style="margin:0">
+      <div class="card-t">Log Today's Runs</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+        <div class="field"><div class="field-l">Date</div><input type="date" id="irrDate"/></div>
+        <div class="field"><div class="field-l">Day</div>
+          <select id="irrDay"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select>
+        </div>
+      </div>
+      <div id="runChecks"></div>
+      <div class="field" style="margin-top:10px"><div class="field-l">Notes</div><textarea id="irrNotes" placeholder="Issues, skips, manual watering…"></textarea></div>
+      <button class="btn-t" onclick="saveIrrigation()">Save to Google Sheets</button>
+      <div id="irrSaveMsg"></div>
+    </div>
+  </div>
+
+  <div class="card" id="irrHistoryCard" style="display:none">
+    <div class="card-t">Log History</div>
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Date</th><th>4AM</th><th>5AM</th><th>10AM</th><th>5PM</th><th>8PM</th><th>All OK?</th><th>Notes</th></tr></thead><tbody id="irrHistoryBody"></tbody></table></div>
+  </div>
+</div>
+
+<!-- ══ PEST ═══════════════════════════════════════════════════ -->
+
+<div id="page-pest" class="page">
+  <div class="sec-t">Pest &amp; Wildlife</div>
+  <div class="sec-s">Log Arlo camera sightings · Repellent reapplication tracker</div>
+
+  <div class="g2">
+    <div class="card" style="margin:0">
+      <div class="card-t">Log a Sighting</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="field"><div class="field-l">Date</div><input type="date" id="pestDate"/></div>
+        <div class="field"><div class="field-l">Time</div><input type="time" id="pestTime"/></div>
+        <div class="field"><div class="field-l">Camera</div>
+          <select id="pestCam"><option>CAM-1 (SE)</option><option>CAM-2 (Full)</option><option>CAM-3 (Gate)</option><option>Visual</option></select>
+        </div>
+        <div class="field"><div class="field-l">Animal</div>
+          <select id="pestAnimal"><option>Rabbit</option><option>Squirrel</option><option>Bird</option><option>Cat</option><option>Coyote</option><option>Other</option></select>
+        </div>
+        <div class="field"><div class="field-l">Count</div><input type="number" id="pestCount" value="1" min="1"/></div>
+        <div class="field"><div class="field-l">Zone</div>
+          <select id="pestZone"><option>Z1</option><option>Z2</option><option>Z3</option><option>Z4</option><option>Z5</option><option>Z6</option><option>Z7</option><option>Z8</option><option>Z9</option><option>Multiple</option></select>
+        </div>
+        <div class="field"><div class="field-l">Entry Point</div>
+          <select id="pestEntry"><option>Back fence</option><option>Front gate</option><option>Unknown</option><option>Over wall</option></select>
+        </div>
+        <div class="field"><div class="field-l">SOD Damage?</div>
+          <select id="pestDamage"><option>No</option><option>Yes – minor</option><option>Yes – significant</option></select>
+        </div>
+      </div>
+      <div class="field"><div class="field-l">Action Taken</div><input type="text" id="pestAction" placeholder="e.g. Reapplied fox urine around Z1–Z3"/></div>
+      <button class="btn-a" onclick="savePest()">🐇 Log Sighting</button>
+      <div id="pestSaveMsg"></div>
+    </div>
+    <div>
+      <div class="card" style="margin:0;margin-bottom:14px">
+        <div class="card-t">Arlo Cameras</div>
+        <div class="cam-card"><div class="cam-id"><span class="live-dot" style="width:5px;height:5px;display:inline-block;margin-right:4px"></span>CAM-1</div><div class="cam-pos">South East Corner</div><div class="cam-cov">Back fence + Z9 zone</div></div>
+        <div class="cam-card"><div class="cam-id"><span class="live-dot" style="width:5px;height:5px;display:inline-block;margin-right:4px"></span>CAM-2</div><div class="cam-pos">Center → SW</div><div class="cam-cov">Full lawn overview</div></div>
+        <div class="cam-card"><div class="cam-id"><span class="live-dot" style="width:5px;height:5px;display:inline-block;margin-right:4px"></span>CAM-3</div><div class="cam-pos">NW / Front Gate</div><div class="cam-cov">Gate entry monitoring</div></div>
+      </div>
+      <div class="card" style="margin:0">
+        <div class="card-t">Repellent Status</div>
+        <div class="rep-row"><div class="rep-name">Fox Urine Granules</div><div class="rep-right"><div class="rep-due">Due: Apr 23</div><span class="pill pill-a">⚠️ Soon</span></div></div>
+        <div class="rep-row"><div class="rep-name">Coyote Urine Liquid</div><div class="rep-right"><div class="rep-due">Due: Apr 7–14</div><span class="pill pill-r">🔴 Now</span></div></div>
+        <div class="rep-row"><div class="rep-name">Pool Noodle Barrier</div><div class="rep-right"><div class="rep-due">Permanent</div><span class="pill pill-t">✅ OK</span></div></div>
+        <div class="rep-row" style="border:none"><div class="rep-name">Wire Mesh</div><div class="rep-right"><div class="rep-due">Permanent</div><span class="pill pill-t">✅ OK</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="pestHistoryCard" style="display:none">
+    <div class="card-t">Sighting History</div>
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Date</th><th>Camera</th><th>Animal</th><th>Zone</th><th>Damage?</th><th>Action</th></tr></thead><tbody id="pestHistoryBody"></tbody></table></div>
+  </div>
+</div>
+
+<!-- ══ WATER ══════════════════════════════════════════════════ -->
+
+<div id="page-water" class="page">
+  <div class="sec-t">Water &amp; Cost</div>
+  <div class="sec-s">32 months of WaterSmart data · Billing history · 2026 budget tracker</div>
+
+  <div class="card">
+    <div class="card-t">GPD vs Most-Efficient Benchmark</div>
+    <div class="card-s">Your daily gallons (blue) vs most-efficient Henderson households (teal dashed)</div>
+    <canvas id="gpdChart" height="90"></canvas>
+  </div>
+
+  <div class="g2">
+    <div class="card" style="margin:0">
+      <div class="card-t">Full Billing History</div>
+      <div class="card-s">Teal=SOD healthy · Red=disaster · Gray=no SOD</div>
+      <canvas id="allBillChart" height="140"></canvas>
+    </div>
+    <div class="card" style="margin:0">
+      <div class="card-t">2026 Budget Tracker</div>
+      <div class="card-s">Update as bills arrive each month</div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Month</th><th>Actual</th><th>Target</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Jan '26</td><td style="font-family:'DM Mono',monospace;color:var(--green)">$100.33</td><td style="font-family:'DM Mono',monospace">$110</td><td><span class="pill pill-g">Under</span></td></tr>
+          <tr><td>Feb '26</td><td style="font-family:'DM Mono',monospace;color:var(--green)">$87.41</td><td style="font-family:'DM Mono',monospace">$100</td><td><span class="pill pill-g">Under</span></td></tr>
+          <tr><td>Mar '26</td><td style="color:var(--tx-s)">Pending</td><td style="font-family:'DM Mono',monospace">$95</td><td><span class="pill pill-t">🌱 SOD</span></td></tr>
+          <tr><td>Apr '26</td><td style="color:var(--tx-s)">Pending</td><td style="font-family:'DM Mono',monospace">$110</td><td>—</td></tr>
+          <tr><td>May '26</td><td style="color:var(--tx-s)">Pending</td><td style="font-family:'DM Mono',monospace">$130</td><td>—</td></tr>
+          <tr><td>Jun '26</td><td style="color:var(--tx-s)">Pending</td><td style="font-family:'DM Mono',monospace">$165</td><td><span class="pill pill-a">⚠️ Watch</span></td></tr>
+          <tr><td>Jul '26</td><td style="color:var(--tx-s)">Pending</td><td style="font-family:'DM Mono',monospace">$180</td><td><span class="pill pill-r">🔴 Critical</span></td></tr>
+          <tr><td>Aug '26</td><td style="color:var(--tx-s)">Pending</td><td style="font-family:'DM Mono',monospace">$175</td><td><span class="pill pill-r">🔴 Critical</span></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ WEATHER ════════════════════════════════════════════════ -->
+
+<div id="page-weather" class="page">
+  <div class="sec-t">Weather</div>
+  <div class="sec-s">Live Henderson, NV · Auto-refreshes every 30 min · Open-Meteo API (free)</div>
+
+  <div id="weatherLoading" style="text-align:center;padding:48px;color:var(--tx-m)">
+    <div style="font-size:36px;margin-bottom:12px">⏳</div>
+    <div style="font-size:13px">Loading live weather for Henderson, NV…</div>
+  </div>
+
+  <div id="weatherContent" style="display:none">
+    <div class="g4" id="weatherStats"></div>
+    <div id="yardAdvisory"></div>
+    <div class="g2">
+      <div class="card" style="margin:0">
+        <div class="card-t">Today's Conditions</div>
+        <div class="card-s" id="weatherUpdated"></div>
+        <div id="todayDetail"></div>
+      </div>
+      <div class="card" style="margin:0">
+        <div class="card-t">Irrigation Recommendation</div>
+        <div class="card-s">Based on today's forecast for Henderson</div>
+        <div id="irrRec"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-t">7-Day Forecast</div>
+      <div class="card-s">Henderson, NV · High · Low · Rain chance</div>
+      <div class="wx-scroll" id="forecastGrid"></div>
+    </div>
+    <div class="card">
+      <div class="card-t">7-Day Temperature Chart</div>
+      <div class="card-s">High (red) · Low (blue)</div>
+      <canvas id="tempChart" height="90"></canvas>
+    </div>
+    <div class="card">
+      <div class="card-t">Weather Log</div>
+      <div class="card-s">Builds automatically each visit — your Henderson seasonal record</div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Date</th><th>High</th><th>Low</th><th>Conditions</th><th>Rain</th><th>Yard Action</th></tr></thead><tbody id="weatherLogBody"></tbody></table></div>
+    </div>
+  </div>
+
+  <div id="weatherError" style="display:none;text-align:center;padding:40px;color:var(--red)">
+    <div style="font-size:32px;margin-bottom:10px">⚠️</div>
+    <div style="font-size:13px">Could not load weather. Check connection.</div>
+    <button onclick="loadWeather()" style="margin-top:16px;background:var(--navy-3);border:1px solid rgba(91,200,197,.2);border-radius:8px;color:var(--tx);padding:10px 20px;cursor:pointer;font-family:'Inter',sans-serif;font-size:13px">Retry</button>
+  </div>
+</div>
+
+</main>
+
+<script>
+// ── CONFIG ───────────────────────────────────────────────────
+const SHEETS_URL = "https://script.google.com/macros/s/AKfycbzprettNl50vd3wqHPJDwrninjnWXM39o3alovLDEzOePIATx2sycNpLi3jE-jdxlSAjA/exec";
+
+// ── DATA ─────────────────────────────────────────────────────
+const HISTORY = [
+  {p:"Jul '23",kgal:24,gpd:null,eff:280,bill:133.10,sod:"ok"},
+  {p:"Aug '23",kgal:31,gpd:1083,eff:343,bill:171.67,sod:"ok"},
+  {p:"Sep '23",kgal:19,gpd:589,eff:280,bill:119.09,sod:"ok"},
+  {p:"Oct '23",kgal:16,gpd:567,eff:267,bill:101.98,sod:"ok"},
+  {p:"Nov '23",kgal:11,gpd:340,eff:233,bill:91.50,sod:"ok"},
+  {p:"Dec '23",kgal:7,gpd:257,eff:224,bill:72.97,sod:"ok"},
+  {p:"Jan '24",kgal:8,gpd:274,eff:206,bill:82.07,sod:"ok"},
+  {p:"Feb '24",kgal:8,gpd:249,eff:204,bill:88.58,sod:"ok"},
+  {p:"Mar '24",kgal:8,gpd:293,eff:206,bill:79.41,sod:"ok"},
+  {p:"Apr '24",kgal:10,gpd:361,eff:232,bill:88.87,sod:"ok"},
+  {p:"May '24",kgal:16,gpd:567,eff:257,bill:110.41,sod:"ok"},
+  {p:"Jun '24",kgal:27,gpd:816,eff:274,bill:162.98,sod:"ok"},
+  {p:"Jul '24",kgal:43,gpd:1421,eff:309,bill:295.66,sod:"dead"},
+  {p:"Aug '24",kgal:31,gpd:981,eff:317,bill:182.16,sod:"none"},
+  {p:"Sep '24",kgal:25,gpd:847,eff:324,bill:152.49,sod:"none"},
+  {p:"Oct '24",kgal:14,gpd:490,eff:303,bill:101.63,sod:"none"},
+  {p:"Nov '24",kgal:13,gpd:397,eff:272,bill:102.03,sod:"none"},
+  {p:"Dec '24",kgal:7,gpd:299,eff:221,bill:71.36,sod:"none"},
+  {p:"Jan '25",kgal:12,gpd:352,eff:220,bill:106.83,sod:"none"},
+  {p:"Feb '25",kgal:9,gpd:272,eff:213,bill:95.95,sod:"none"},
+  {p:"Mar '25",kgal:9,gpd:320,eff:213,bill:86.27,sod:"none"},
+  {p:"Apr '25",kgal:13,gpd:423,eff:249,bill:103.48,sod:"none"},
+  {p:"May '25",kgal:13,gpd:408,eff:257,bill:111.97,sod:"none"},
+  {p:"Jun '25",kgal:22,gpd:748,eff:283,bill:141.07,sod:"none"},
+  {p:"Jul '25",kgal:22,gpd:657,eff:299,bill:146.26,sod:"none"},
+  {p:"Aug '25",kgal:20,gpd:696,eff:299,bill:133.93,sod:"none"},
+  {p:"Sep '25",kgal:20,gpd:673,eff:294,bill:135.23,sod:"none"},
+  {p:"Oct '25",kgal:11,gpd:350,eff:257,bill:102.00,sod:"none"},
+  {p:"Nov '25",kgal:11,gpd:400,eff:240,bill:94.28,sod:"none"},
+  {p:"Dec '25",kgal:12,gpd:341,eff:209,bill:110.51,sod:"none"},
+  {p:"Jan '26",kgal:11,gpd:386,eff:213,bill:100.33,sod:"none"},
+  {p:"Feb '26",kgal:8,gpd:293,eff:206,bill:87.41,sod:"new"},
+];
+
+const ZONES = [
+  {id:"Z1",loc:"NW",sun:10,note:"Back fence NW — rabbit entry priority"},
+  {id:"Z2",loc:"N",sun:11,note:"Center back — highest rabbit traffic"},
+  {id:"Z3",loc:"NE",sun:10,note:"Back fence NE — rabbit entry risk"},
+  {id:"Z4",loc:"W",sun:9,note:"West side strip — lower sun hours"},
+  {id:"Z5",loc:"CTR",sun:12,note:"Main lawn center — priority zone"},
+  {id:"Z6",loc:"E",sun:12,note:"East — near agave bed"},
+  {id:"Z7",loc:"SW",sun:11,note:"SW — near pool edge"},
+  {id:"Z8",loc:"S",sun:10,note:"South — near pool and patio"},
+  {id:"Z9",loc:"SE",sun:11,note:"SE corner — CAM-1 installed here"},
+];
+
+const IRR_RUNS = [
+  {key:"run_0400_drip",label:"4:00 AM"},
+  {key:"run_0500_spr",label:"5:00 AM"},
+  {key:"run_1000_spr",label:"10:00 AM"},
+  {key:"run_1700_spr",label:"5:00 PM"},
+  {key:"run_2000_drip",label:"8:00 PM"},
+];
+
+const zoneState = {};
+ZONES.forEach(z=>zoneState[z.id]={color:0,moisture:0,pest:"None"});
+let selectedZone=null;
+const runSelections={};
+
+// ── NAVIGATION ───────────────────────────────────────────────
+function showTab(id,el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn,.mob-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  if(el) el.classList.add('active');
+  // Also activate matching mobile tab
+  const mob=document.querySelector(`.mob-tab[data-tab="${id}"]`);
+  if(mob) mob.classList.add('active');
+  if(id==='weather') loadWeather();
+  window.scrollTo(0,0);
+}
+
+// ── SHEETS + LOCAL STORAGE ───────────────────────────────────
+async function sheetsWrite(sheet,payload){
+  try{
+    await fetch(SHEETS_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({sheet,...payload})});
+    return true;
+  }catch(e){return false;}
+}
+function localSave(key,data){
+  try{
+    const ex=JSON.parse(localStorage.getItem('rh_'+key)||'[]');
+    ex.unshift({...data,timestamp:new Date().toISOString()});
+    localStorage.setItem('rh_'+key,JSON.stringify(ex.slice(0,100)));
+  }catch(e){}
+}
+function localLoad(key){
+  try{return JSON.parse(localStorage.getItem('rh_'+key)||'[]');}catch(e){return[];}
+}
+function showSaveMsg(elId,ok){
+  const el=document.getElementById(elId);
+  el.innerHTML=ok
+    ?'<div class="save-msg save-ok">✓ Saved to Google Sheets + local backup</div>'
+    :'<div class="save-msg save-err">✗ Saved locally — Sheets sync may have failed</div>';
+  setTimeout(()=>el.innerHTML='',3500);
+}
+
+// ── SOD ──────────────────────────────────────────────────────
+function buildZoneGrid(){
+  const grid=document.getElementById('zoneGrid');
+  grid.innerHTML='';
+  ZONES.forEach(z=>{
+    const d=zoneState[z.id];
+    const hClass=d.color?'h'+d.color:'h0';
+    const labels=['—','☠️','🔴','🟡','🟢','💚'];
+    const dots=[1,2,3,4,5].map(i=>{
+      const cls=d.color>=i?(d.color>=4?'f':d.color===3?'w':'rd'):'';
+      return `<div class="zdot ${cls}"></div>`;
+    }).join('');
+    const div=document.createElement('div');
+    div.className=`zc ${hClass}${selectedZone===z.id?' sel':''}`;
+    div.innerHTML=`<div class="zid">${z.id}</div><div class="zloc">${z.loc}</div><div class="zsun">☀️ ~${z.sun}h</div><div class="zdots">${dots}<span style="font-size:9px;color:var(--tx-s);margin-left:4px">${labels[d.color]||'—'}</span></div>`;
+    div.onclick=()=>selectZone(z.id);
+    grid.appendChild(div);
+  });
+}
+function selectZone(id){
+  selectedZone=selectedZone===id?null:id;
+  buildZoneGrid();
+  const card=document.getElementById('zonePanelCard');
+  if(!selectedZone){card.style.display='none';return;}
+  const z=ZONES.find(z=>z.id===id);
+  card.style.display='block';
+  document.getElementById('zonePanelTitle').textContent=id+' — '+z.loc;
+  document.getElementById('zonePanelNote').textContent=z.note;
+  buildNumBtns('colorBtns',5,'color','ag');
+  buildNumBtns('moistureBtns',5,'moisture','ab');
+  buildPestActivityBtns();
+}
+function buildNumBtns(cid,count,field,activeClass){
+  const c=document.getElementById(cid);c.innerHTML='';
+  for(let i=1;i<=count;i++){
+    const btn=document.createElement('button');
+    btn.className='num-btn'+(zoneState[selectedZone][field]===i?' '+activeClass:'');
+    btn.textContent=i;
+    btn.onclick=()=>{zoneState[selectedZone][field]=i;buildNumBtns(cid,count,field,activeClass);buildZoneGrid();};
+    c.appendChild(btn);
+  }
+}
+function buildPestActivityBtns(){
+  const c=document.getElementById('pestActivityBtns');c.innerHTML='';
+  ['None','Low','Medium','High'].forEach(v=>{
+    const active=zoneState[selectedZone].pest===v;
+    const btn=document.createElement('button');
+    btn.style.cssText=`padding:8px 14px;border-radius:100px;border:1px solid ${active?'var(--amber)':'rgba(91,200,197,.15)'};background:${active?'var(--amber-g)':'var(--navy-3)'};color:${active?'var(--amber-l)':'var(--tx-m)'};cursor:pointer;font-size:13px;font-weight:600;transition:all .15s;min-height:40px;font-family:'Inter',sans-serif`;
+    btn.textContent=v;
+    btn.onclick=()=>{zoneState[selectedZone].pest=v;buildPestActivityBtns();};
+    c.appendChild(btn);
+  });
+}
+async function saveSod(){
+  const payload={
+    date:document.getElementById('sodDate').value,
+    overall_status:document.getElementById('sodOverall').value,
+    temp_f:document.getElementById('sodTemp').value,
+    action_taken:document.getElementById('sodAction').value,
+    notes:document.getElementById('sodNotes').value,
+  };
+  ZONES.forEach(z=>{payload[z.id.toLowerCase()+'_color']=zoneState[z.id].color;payload[z.id.toLowerCase()+'_moisture']=zoneState[z.id].moisture;});
+  const ok=await sheetsWrite('SOD',payload);
+  localSave('SOD',payload);
+  showSaveMsg('sodSaveMsg',ok);
+  loadSodHistory();
+}
+function loadSodHistory(){
+  const data=localLoad('SOD');if(!data.length)return;
+  document.getElementById('sodHistoryCard').style.display='block';
+  document.getElementById('sodHistoryBody').innerHTML=data.slice(0,10).map(r=>
+    `<tr><td style="font-family:'DM Mono',monospace;font-size:11px">${String(r.date||'').slice(0,10)}</td><td>${r.overall_status||'—'}</td><td style="font-family:'DM Mono',monospace">${r.temp_f?r.temp_f+'°F':'—'}</td><td style="color:var(--tx-m);font-size:11px">${r.action_taken||'—'}</td></tr>`
+  ).join('');
+}
+
+// ── IRRIGATION ───────────────────────────────────────────────
+function buildRunChecks(){
+  document.getElementById('runChecks').innerHTML=IRR_RUNS.map(r=>`
+    <div class="run-check-row">
+      <div class="run-check-label">${r.label}</div>
+      <div class="run-check-btns">
+        ${['✅','❌','⚠️'].map(s=>`<button class="run-check-btn" onclick="markRun('${r.key}','${s}',this)">${s}</button>`).join('')}
+      </div>
+      <span id="run_label_${r.key}" class="run-status-label"></span>
+    </div>`).join('');
+}
+function markRun(key,val,btn){
+  runSelections[key]=val;
+  btn.parentElement.querySelectorAll('.run-check-btn').forEach(b=>{b.style.borderColor='rgba(91,200,197,.12)';b.style.background='var(--navy-3)';});
+  btn.style.borderColor='var(--teal)';btn.style.background='rgba(91,200,197,.1)';
+  document.getElementById('run_label_'+key).textContent=val==='✅'?'OK':val==='❌'?'MISSED':'ISSUE';
+}
+async function saveIrrigation(){
+  const allOk=IRR_RUNS.every(r=>runSelections[r.key]==='✅');
+  const payload={
+    date:document.getElementById('irrDate').value,
+    day_of_week:document.getElementById('irrDay').value,
+    all_ok:allOk?'Yes':'No',
+    notes:document.getElementById('irrNotes').value,
+    ...Object.fromEntries(IRR_RUNS.map(r=>[r.key,runSelections[r.key]||'']))
+  };
+  const ok=await sheetsWrite('IRRIGATION',payload);
+  localSave('IRRIGATION',payload);
+  showSaveMsg('irrSaveMsg',ok);
+  loadIrrHistory();
+}
+function loadIrrHistory(){
+  const data=localLoad('IRRIGATION');if(!data.length)return;
+  document.getElementById('irrHistoryCard').style.display='block';
+  document.getElementById('irrHistoryBody').innerHTML=data.slice(0,10).map(r=>`
+    <tr>
+      <td style="font-family:'DM Mono',monospace;font-size:11px">${String(r.date||'').slice(0,10)}</td>
+      ${IRR_RUNS.map(run=>`<td style="font-size:15px">${r[run.key]||'—'}</td>`).join('')}
+      <td>${r.all_ok==='Yes'?'<span class="pill pill-t">YES</span>':'<span class="pill pill-r">NO</span>'}</td>
+      <td style="color:var(--tx-m);font-size:11px">${r.notes||'—'}</td>
+    </tr>`).join('');
+}
+
+// ── PEST ─────────────────────────────────────────────────────
+async function savePest(){
+  const payload={
+    date:document.getElementById('pestDate').value,
+    time:document.getElementById('pestTime').value,
+    camera_id:document.getElementById('pestCam').value,
+    animal_type:document.getElementById('pestAnimal').value,
+    count:document.getElementById('pestCount').value,
+    zone_sighted:document.getElementById('pestZone').value,
+    entry_point:document.getElementById('pestEntry').value,
+    sod_damage:document.getElementById('pestDamage').value,
+    action_taken:document.getElementById('pestAction').value,
+  };
+  const ok=await sheetsWrite('PEST',payload);
+  localSave('PEST',payload);
+  showSaveMsg('pestSaveMsg',ok);
+  loadPestHistory();
+  document.getElementById('pestAction').value='';
+}
+function loadPestHistory(){
+  const data=localLoad('PEST');if(!data.length)return;
+  document.getElementById('pestHistoryCard').style.display='block';
+  document.getElementById('pestHistoryBody').innerHTML=data.slice(0,10).map(r=>`
+    <tr>
+      <td style="font-family:'DM Mono',monospace;font-size:11px">${String(r.date||'').slice(0,10)}</td>
+      <td><span class="pill pill-b">${r.camera_id||'—'}</span></td>
+      <td style="font-weight:600">${r.animal_type||'—'}</td>
+      <td>${r.zone_sighted||'—'}</td>
+      <td>${r.sod_damage==='No'?'<span class="pill pill-t">No</span>':'<span class="pill pill-r">'+r.sod_damage+'</span>'}</td>
+      <td style="color:var(--tx-m);font-size:11px">${r.action_taken||'—'}</td>
+    </tr>`).join('');
+}
+
+// ── CHARTS ───────────────────────────────────────────────────
+Chart.defaults.color='#8fa3b8';
+Chart.defaults.borderColor='rgba(91,200,197,.08)';
+Chart.defaults.font.family="'Inter',sans-serif";
+
+function buildCharts(){
+  const last18=HISTORY.slice(-18);
+
+  // Bill history
+  new Chart(document.getElementById('billChart'),{type:'bar',data:{labels:last18.map(d=>d.p),datasets:[{data:last18.map(d=>d.bill),backgroundColor:last18.map(d=>d.sod==='dead'?'#e05c52':d.sod==='new'?'#5BC8C5':'#1e4270'),borderRadius:3}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:8},maxRotation:45}},y:{grid:{color:'rgba(91,200,197,.06)'},ticks:{callback:v=>'$'+v,font:{size:9}}}}}});
+
+  // Summer comparison
+  new Chart(document.getElementById('summerChart'),{type:'bar',data:{labels:['Jun','Jul','Aug','Sep'],datasets:[{label:'2024 (SOD)',data:[27,43,31,25],backgroundColor:'rgba(224,92,82,.7)',borderRadius:3},{label:'2025 (No SOD)',data:[22,22,20,20],backgroundColor:'rgba(200,121,65,.7)',borderRadius:3}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:{size:11}}}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(91,200,197,.06)'}}}}});
+
+  // Projection
+  new Chart(document.getElementById('projChart'),{type:'bar',data:{labels:['Apr','May','Jun','Jul','Aug','Sep'],datasets:[{label:'Low Est.',data:[100,115,140,145,135,120],backgroundColor:'rgba(91,155,213,.5)',borderRadius:3},{label:'High Est.',data:[125,145,175,210,195,160],backgroundColor:'rgba(224,92,82,.35)',borderRadius:3}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:{size:11}}}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(91,200,197,.06)'},ticks:{callback:v=>'$'+v}}}}});
+
+  // GPD history
+  new Chart(document.getElementById('gpdChart'),{type:'line',data:{labels:HISTORY.map(d=>d.p),datasets:[{label:'Your GPD',data:HISTORY.map(d=>d.gpd),borderColor:'#5b9bd5',backgroundColor:'rgba(91,155,213,.12)',fill:true,tension:.3,pointRadius:2,borderWidth:2},{label:'Efficient GPD',data:HISTORY.map(d=>d.eff),borderColor:'#5BC8C5',fill:false,tension:.3,pointRadius:0,borderDash:[4,4],borderWidth:1.5}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:{size:11}}}},scales:{x:{grid:{display:false},ticks:{font:{size:8},maxTicksLimit:10}},y:{grid:{color:'rgba(91,200,197,.06)'},ticks:{font:{size:9}}}}}});
+
+  // All billing
+  new Chart(document.getElementById('allBillChart'),{type:'bar',data:{labels:HISTORY.map(d=>d.p),datasets:[{data:HISTORY.map(d=>d.bill),backgroundColor:HISTORY.map(d=>d.sod==='dead'?'#e05c52':d.sod==='new'?'#5BC8C5':d.sod==='ok'?'#1e6b5a':'#1e4270'),borderRadius:2}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:7},maxTicksLimit:14,maxRotation:45}},y:{grid:{color:'rgba(91,200,197,.06)'},ticks:{callback:v=>'$'+v,font:{size:9}}}}}});
+}
+
+// ── WEATHER ──────────────────────────────────────────────────
+const LAT=36.0397,LON=-114.9819;
+const WX_ICONS={0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌧️',61:'🌧️',63:'🌧️',65:'🌧️',71:'🌨️',73:'🌨️',75:'🌨️',80:'🌦️',81:'🌧️',82:'⛈️',95:'⛈️',96:'⛈️',99:'⛈️'};
+const WX_DESC={0:'Clear sky',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Foggy',48:'Icy fog',51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',71:'Light snow',73:'Snow',75:'Heavy snow',80:'Showers',81:'Rain showers',82:'Violent showers',95:'Thunderstorm',96:'Thunderstorm w/ hail',99:'Heavy thunderstorm'};
+let tempChartInst=null;
+
+async function loadWeather(){
+  document.getElementById('weatherLoading').style.display='block';
+  document.getElementById('weatherContent').style.display='none';
+  document.getElementById('weatherError').style.display='none';
+  try{
+    const url=`https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,uv_index&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,weather_code,uv_index_max,wind_speed_10m_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&forecast_days=7&timezone=America%2FLos_Angeles`;
+    const data=await(await fetch(url)).json();
+    renderWeather(data);
+    saveWeatherLog(data);
+  }catch(e){
+    document.getElementById('weatherLoading').style.display='none';
+    document.getElementById('weatherError').style.display='block';
+  }
+}
+
+function renderWeather(data){
+  const c=data.current,d=data.daily;
+  document.getElementById('weatherLoading').style.display='none';
+  document.getElementById('weatherContent').style.display='block';
+  const icon=WX_ICONS[c.weather_code]||'🌡️',desc=WX_DESC[c.weather_code]||'Unknown';
+  const temp=Math.round(c.temperature_2m),feels=Math.round(c.apparent_temperature);
+  const hi=Math.round(d.temperature_2m_max[0]),lo=Math.round(d.temperature_2m_min[0]);
+  const rain=d.precipitation_probability_max[0]||0,uv=c.uv_index||d.uv_index_max[0]||0;
+  const wind=Math.round(c.wind_speed_10m),hum=Math.round(c.relative_humidity_2m);
+
+  document.getElementById('weatherStats').innerHTML=`
+    <div class="stat r"><div class="stat-i">${icon}</div><div class="stat-l">Current Temp</div><div class="stat-v r">${temp}°F</div><div class="stat-s">Feels like ${feels}°F</div></div>
+    <div class="stat a"><div class="stat-i">📊</div><div class="stat-l">High / Low</div><div class="stat-v a">${hi}° / ${lo}°</div><div class="stat-s">${desc}</div></div>
+    <div class="stat b"><div class="stat-i">🌂</div><div class="stat-l">Rain Chance</div><div class="stat-v b">${rain}%</div><div class="stat-s">${c.precipitation>0?c.precipitation+'" today':'None yet'}</div></div>
+    <div class="stat ${uv>=8?'r':uv>=6?'a':'t'}"><div class="stat-i">🕶️</div><div class="stat-l">UV Index</div><div class="stat-v ${uv>=8?'r':uv>=6?'a':'t'}">${Math.round(uv)}</div><div class="stat-s">${uv>=11?'Extreme':uv>=8?'Very High':uv>=6?'High':uv>=3?'Moderate':'Low'}</div></div>`;
+
+  let advClass,advIcon,advTitle,advTxt;
+  if(hi>=110){advClass='danger';advIcon='🔥';advTitle=`EXTREME HEAT — ${hi}°F today`;advTxt='SOD stress is critical. Add a manual mid-afternoon watering run. Check all zones for wilting by 2PM.';}
+  else if(hi>=100){advClass='warn';advIcon='⚠️';advTitle=`High heat day — ${hi}°F`;advTxt='Keep all 5 irrigation runs on schedule. Check Z5 and Z2 for dry patches by late afternoon.';}
+  else if(rain>=50){advClass='warn';advIcon='🌧️';advTitle=`Rain possible — ${rain}%`;advTxt='Consider skipping one sprinkler run if rain exceeds 0.25". Log any rainfall.';}
+  else if(hi>=90){advClass='warn';advIcon='🌡️';advTitle=`Warm day — ${hi}°F`;advTxt='Normal schedule. Monitor zone moisture levels in the evening.';}
+  else{advClass='good';advIcon='✅';advTitle=`Good conditions — ${hi}°F`;advTxt='Normal irrigation schedule. Ideal day to walk all 9 zones and log color + moisture readings.';}
+  document.getElementById('yardAdvisory').innerHTML=`<div class="advisory ${advClass}"><div class="advisory-icon">${advIcon}</div><div><div class="advisory-title" style="color:${advClass==='danger'?'var(--red)':advClass==='warn'?'var(--amber-l)':'var(--green)'}">${advTitle}</div><div class="advisory-txt">${advTxt}</div></div></div>`;
+
+  document.getElementById('weatherUpdated').textContent='Updated '+new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+  document.getElementById('todayDetail').innerHTML=`
+    <div class="today-row"><span class="today-label">Conditions</span><span class="today-val">${icon} ${desc}</span></div>
+    <div class="today-row"><span class="today-label">Temp / Feels like</span><span class="today-val">${temp}°F / ${feels}°F</span></div>
+    <div class="today-row"><span class="today-label">High / Low</span><span class="today-val"><span style="color:var(--red)">${hi}°F</span> / <span style="color:var(--blue)">${lo}°F</span></span></div>
+    <div class="today-row"><span class="today-label">Humidity</span><span class="today-val">${hum}%</span></div>
+    <div class="today-row"><span class="today-label">Wind</span><span class="today-val">${wind} mph</span></div>
+    <div class="today-row"><span class="today-label">UV Index</span><span class="today-val" style="color:${uv>=8?'var(--red)':uv>=6?'var(--amber-l)':'var(--green)'}">${Math.round(uv)} — ${uv>=11?'Extreme':uv>=8?'Very High':uv>=6?'High':uv>=3?'Moderate':'Low'}</span></div>
+    <div class="today-row"><span class="today-label">Rain Today</span><span class="today-val">${c.precipitation>0?c.precipitation+'"':'None'} (${rain}% chance)</span></div>`;
+
+  let rec='';
+  if(rain>=70) rec+=`<div class="irr-rec-item skip"><div class="irr-rec-icon">❌</div><div class="irr-rec-text"><strong>Skip sprinkler runs</strong>Rain likely (${rain}%). Skip 5AM/10AM/5PM sprinklers. Keep drip on.</div></div>`;
+  else if(hi>=108) rec+=`<div class="irr-rec-item reduce"><div class="irr-rec-icon">⚡</div><div class="irr-rec-text"><strong>Add emergency run</strong>Extreme heat. Manual 5-min pass around 2PM on Z1–Z5.</div></div>`;
+  else if(hi>=100) rec+=`<div class="irr-rec-item go"><div class="irr-rec-icon">✅</div><div class="irr-rec-text"><strong>Run full schedule</strong>${hi}°F. Keep all 5 runs. Do not skip any.</div></div>`;
+  else rec+=`<div class="irr-rec-item go"><div class="irr-rec-icon">✅</div><div class="irr-rec-text"><strong>Normal schedule</strong>${hi}°F forecast. All 5 irrigation runs as planned.</div></div>`;
+  if(uv>=10) rec+=`<div class="irr-rec-item reduce"><div class="irr-rec-icon">🕶️</div><div class="irr-rec-text"><strong>UV extreme (${Math.round(uv)})</strong>No yard work 11AM–3PM. Morning or evening only.</div></div>`;
+  if(wind>=20) rec+=`<div class="irr-rec-item reduce"><div class="irr-rec-icon">💨</div><div class="irr-rec-text"><strong>High wind (${wind} mph)</strong>Sprinkler coverage uneven. Check windward side for dry zones.</div></div>`;
+  document.getElementById('irrRec').innerHTML=rec;
+
+  const wdays=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  document.getElementById('forecastGrid').innerHTML=Array.from({length:7},(_,i)=>{
+    const date=new Date(d.time[i]+'T12:00:00');
+    const fHi=Math.round(d.temperature_2m_max[i]),fLo=Math.round(d.temperature_2m_min[i]);
+    const fRain=d.precipitation_probability_max[i]||0;
+    const heatColor=fHi>=110?'var(--red)':fHi>=100?'var(--amber-l)':'var(--red)';
+    return `<div class="wx-day"><div class="wx-day-name">${i===0?'Today':i===1?'Tmrw':wdays[date.getDay()]}</div><div class="wx-day-icon">${WX_ICONS[d.weather_code[i]]||'🌡️'}</div><div class="wx-day-hi" style="color:${heatColor}">${fHi}°</div><div class="wx-day-lo">${fLo}°</div><div class="wx-day-rain">${fRain>0?'🌧 '+fRain+'%':'—'}</div></div>`;
+  }).join('');
+
+  if(tempChartInst) tempChartInst.destroy();
+  tempChartInst=new Chart(document.getElementById('tempChart'),{type:'line',data:{labels:d.time.map((t,i)=>i===0?'Today':wdays[new Date(t+'T12:00:00').getDay()]),datasets:[{label:'High °F',data:d.temperature_2m_max.map(v=>Math.round(v)),borderColor:'#e05c52',backgroundColor:'rgba(224,92,82,.1)',fill:true,tension:.4,pointRadius:4,borderWidth:2},{label:'Low °F',data:d.temperature_2m_min.map(v=>Math.round(v)),borderColor:'#5b9bd5',backgroundColor:'rgba(91,155,213,.08)',fill:true,tension:.4,pointRadius:4,borderWidth:2}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:{size:11}}}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:'rgba(91,200,197,.06)'},ticks:{callback:v=>v+'°F',font:{size:9}}}}}});
+}
+
+function saveWeatherLog(data){
+  try{
+    const d=data.daily;
+    const entry={date:d.time[0],high:Math.round(d.temperature_2m_max[0]),low:Math.round(d.temperature_2m_min[0]),desc:WX_DESC[d.weather_code[0]]||'—',rain:d.precipitation_sum[0]>0?d.precipitation_sum[0]+'"':'None',action:d.temperature_2m_max[0]>=110?'🔥 Add manual run':d.temperature_2m_max[0]>=100?'⚠️ Full schedule':d.precipitation_probability_max[0]>=70?'🌧️ Skip sprinklers':'✅ Normal schedule'};
+    const log=JSON.parse(localStorage.getItem('rh_WEATHER')||'[]').filter(e=>e.date!==entry.date);
+    log.unshift(entry);
+    localStorage.setItem('rh_WEATHER',JSON.stringify(log.slice(0,60)));
+    renderWeatherLog();
+  }catch(e){}
+}
+function renderWeatherLog(){
+  const log=JSON.parse(localStorage.getItem('rh_WEATHER')||'[]');
+  const body=document.getElementById('weatherLogBody');
+  if(!log.length){body.innerHTML='<tr><td colspan="6" style="text-align:center;color:var(--tx-s);padding:20px;font-size:12px">Visit this tab regularly to build your Henderson seasonal record</td></tr>';return;}
+  body.innerHTML=log.map(r=>`<tr><td style="font-family:'DM Mono',monospace;font-size:11px">${r.date}</td><td style="font-family:'DM Mono',monospace;color:var(--red)">${r.high}°F</td><td style="font-family:'DM Mono',monospace;color:var(--blue)">${r.low}°F</td><td style="font-size:12px">${r.desc}</td><td style="font-size:12px">${r.rain}</td><td style="font-size:12px">${r.action}</td></tr>`).join('');
+}
+setInterval(()=>{if(document.getElementById('page-weather').classList.contains('active'))loadWeather();},30*60*1000);
+
+// ── INIT ─────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded',()=>{
+  const today=new Date().toISOString().split('T')[0];
+  ['sodDate','irrDate','pestDate'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=today;});
+  const wdays=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const irrDay=document.getElementById('irrDay');
+  if(irrDay)irrDay.value=wdays[new Date().getDay()];
+  buildZoneGrid();
+  buildRunChecks();
+  buildCharts();
+  loadSodHistory();
+  loadIrrHistory();
+  loadPestHistory();
+  renderWeatherLog();
+});
+</script>
+
+</body>
+</html>
