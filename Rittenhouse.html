@@ -707,6 +707,7 @@ function showTab(id,el){
 async function sheetsWrite(sheet,payload){
   try{
     await fetch(SHEETS_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({sheet,...payload})});
+ const NEW_SHEET_ID = "1uCd1hx0gsjfEZX7tmaA-D9DRg9JjlKILFtQLD0sOEgw";
     return true;
   }catch(e){return false;}
 }
